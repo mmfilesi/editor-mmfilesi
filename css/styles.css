@@ -1,0 +1,362 @@
+@charset "UTF-8";
+
+@font-face {
+  font-family: "editor-icons";
+  src:url("../fonts/editor-icons.eot");
+  src:url("../fonts/editor-icons.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/editor-icons.woff") format("woff"),
+    url("../fonts/editor-icons.ttf") format("truetype"),
+    url("../fonts/editor-icons.svg#untitled-font-1") format("svg");
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+/* Icons FORM CITAAAAAAAAAAAAAAAAAAAAAAR */
+
+[data-icon]:before {
+  font-family: "editor-icons" !important;
+  content: attr(data-icon);
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  font-family: "editor-icons" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Listos */
+
+.icon-colors:before {
+  content: "v";
+}
+
+.icon-colors-bk:before {
+  content: "A";
+}
+
+.icon-bold:before {
+  content: "e";
+}
+
+.icon-italic:before {
+  content: "w";
+}
+
+.icon-underline:before {
+  content: "s";
+}
+
+.icon-strikeThrough:before {
+  content: "o";
+}
+
+.icon-subscript:before {
+  content: "p";
+}
+
+.icon-superscript:before {
+  content: "q";
+}
+
+.icon-smallCaps:before {
+  content: "S";
+}
+
+.icon-header:before {
+  content: "T";
+}
+
+.icon-justifyCenter:before {
+  content: "a";
+}
+
+.icon-justifyFull:before {
+  content: "b";
+}
+
+.icon-justifyLeft:before {
+  content: "c";
+}
+.icon-justifyRight:before {
+  content: "d";
+}
+
+.icon-insertUnorderedList:before {
+  content: "j";
+}
+
+.icon-insertOrderedList:before {
+  content: "k";
+}
+
+.icon-undo:before {
+  content: "n";
+}
+
+.icon-redo:before {
+  content: "F";
+}
+
+.icon-removeFormat:before {
+  content: "y";
+}
+
+.icon-code:before {
+  content: "E";
+}
+
+
+/* */
+.icon-link:before {
+  content: "l";
+}
+
+.icon-img:before {
+  content: "m";
+}
+
+.icon-smile:before {
+  content: "u";
+}
+
+
+.icon-eye-slash-close:before {
+  content: "i";
+}
+
+
+
+.icon-eye:before {
+  content: "h";
+}
+
+.icon-filmstrip:before {
+  content: "x";
+}
+
+.icon-table:before {
+  content: "B";
+}
+
+
+
+
+
+
+/* */
+
+
+
+
+
+/* ************* */
+.icon-clock:before {
+  content: "f";
+}
+.icon-cursor-move:before {
+  content: "g";
+}
+
+
+.icon-paper-clip:before {
+  content: "l";
+}
+.icon-photo:before {
+  content: "m";
+}
+
+.icon-text-height:before {
+  content: "r";
+}
+
+.icon-youtube:before {
+  content: "t";
+}
+
+.icon-pencil:before {
+  content: "v";
+}
+
+
+
+/* Editor */
+
+#editor-mm {
+  border-left: 1px solid #C2C2C2;
+  border-right: 1px solid #EDEDED;
+  border-bottom: 1px solid #EDEDED;
+  min-height: 200px;
+  overflow-y: auto;
+  padding: 1em;
+  box-sizing: border-box;
+}
+
+.toolbar  {
+  background: #ededed;  
+  border: 1px solid #ccc;
+  padding: 0.2em;
+  box-sizing: border-box;
+}
+
+.buttonsToolbar {
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+  margin: 0.1em 0.1em;
+  font-size: 16px;
+}
+
+.buttonsToolbarSep {
+  width: 1px;
+  height: 20px;
+  display: inline-block;
+  border-right: 1px solid #C7C5C5;
+  vertical-align: middle;
+  margin-left: 3px;
+  margin-right: 3px
+}
+
+.toolbarCommonPanel {
+  background: #fafafa;  
+  border-top: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #666;
+  border-bottom: 1px solid #666;
+  padding: 0.5em;
+  box-sizing: border-box;
+  position:absolute;
+  z-index: 5;
+  font-size: 16px;
+  display:none;
+}
+
+ #headerPanel ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  line-height: 22px
+}
+
+#headerPanel li:hover, #headerPanel p:hover {
+  cursor: pointer;
+}
+
+#headerPanel p {
+  text-align: center;
+  border-top: 1px solid #ededed;
+  margin-bottom: 0.1em;
+  margin-top: 0.2em;
+  padding-top: 0.2em;
+}
+
+#colorsPanel {
+  width: 260px;
+}
+
+.colorsTile {
+  display:inline-block;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  margin: 0.1em;
+  border: 1px solid #d5d5d5;
+}
+
+.colorsTile:hover {
+  opacity: 0.5;
+}
+
+
+/* Normalize :P */
+
+b {
+  font-weight: bold;
+}
+
+i {
+  font-style: italic;
+}
+
+sub, sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+ 
+sup {
+  top: -0.5em;
+}
+ 
+sub {
+  bottom: -0.25em;
+}
+
+
+/* Special cases */
+
+#js-code {
+  float:right;
+}
+
+
+
+/* Ajustar */
+
+.js-titularSecccion {
+  padding:0.2em;
+}
+
+/*
+
+#paletaColor {
+  z-index: 10001;
+  position: absolute;
+  width: 202px;
+  height: 220px;
+  background: #EDEDED;
+  display: none;
+  padding: 10px;
+}
+
+#paletaTabla {
+  z-index: 10001;
+  position: absolute;
+  width: 202px;
+  height: 220px;
+  background: #EDEDED;
+  right: 425px;
+  display: none;
+  padding: 10px;
+} */
+
+/*
+.rotulosPaleta {
+  font-size: 0.7em;
+  line-height: 14px;
+  color: #66635f;
+}
+
+.rotulosPaleta:hover {
+  color: #66635f;
+}
+
+*/
