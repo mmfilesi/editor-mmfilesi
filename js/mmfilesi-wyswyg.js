@@ -75,9 +75,10 @@
                   } 
                 stringToolbar += "</ul><p class='js-optionHeader' data-header='par'>"+lang[options.lang].paragraph+"</p></div>";
               }
-              if ( options.buttons[i].action == "link" ) {
+              if ( options.buttons[i].action == "link" ) { // CAMBIAR ICONO DEL PANEL POR CADENA Y AÑADIR UNO VALIDAR
                 stringToolbar += "<div class='toolbarCommonPanel' id='linkPanel'>";
-                  PANEL ENLACES 
+                stringToolbar += "<input type='text' id='js-inputLink' class='inputsToolbar inputWithIcon' placeholder='www.url.com'>";
+                stringToolbar += "<span id='submitLink' class='icon-bold iconInput success'></span>"; 
                 stringToolbar += "</div>";
               }
               if ( options.buttons[i].action == "colors" ) {
@@ -121,8 +122,11 @@
               case "undo":
               case "redo":
               
-              case "unlink":  /// PENDIENTE         
+              case "unlink":  /// PENDIENTE          
               document.execCommand(this.action, false, null);
+              break;
+              case "link":
+                self.linkButton(this.action);
               break;
               case "colors-bk":
               case "colors":
@@ -182,6 +186,35 @@
                 self.restoreSelection(selRange);
                 self.nodeButton("h"+$(this).attr('data-header'));
               }               
+              unbindButton();            
+            });
+          }
+        },
+
+        linkButton: function() {
+          var self = this;
+          var linkPanel = $('#linkPanel');
+          var selObj, newNode; 
+          var selRange = null;
+          function unbindButton() {
+            linkPanel.slideUp(600).removeClass('js-active');
+            $('.js-optionHeader').unbind('click'); // <................... OJO
+            linkPanel = null;
+            $('#js-inputLink').val('');
+          }
+          selObj = self.getSelection();          
+          if ( selObj.type != 'None' && selObj.isCollapsed === false ) {
+            selRange = selObj.getRangeAt(0);
+          }
+          if ( linkPanel.hasClass('js-active') ) {
+            unbindButton();
+          } else {
+            linkPanel.css('left', $('#js-link').offset().left).slideDown(600).addClass('js-active');
+            $('.js-optionHeader').click(function() {
+              if(selRange !== null ) {
+                self.restoreSelection(selRange);
+                self.nodeButton("h"+$(this).attr('data-header'));
+              }          
               unbindButton();            
             });
           }
