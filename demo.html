@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>tiny editor wyswyg mmfilesi - demo</title>
+        <meta name="description" content="tiny editor wyswyg mmfilesi - demo">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="css/styles.css" media="screen" />
+    </head>
+
+  <body>
+
+    <textarea id="foo">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </textarea>
+
+    <script src="js/vendor/jquery.min.js"></script>        
+    <script src="js/mmfilesi-tiny-wyswyg.js"></script>
+
+    <script>
+    $(document).ready(function () {
+        var options = {};
+        $('#foo').editorMM(options);  
+    });
+    </script>
+
+  </body>
+
+</html>
