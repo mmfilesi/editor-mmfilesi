@@ -10,7 +10,7 @@
         defaults = {
         	style: {'bgPrimary':'ccc', 'textPrimary':'000', 'width':'800px', 'height':'100%'},
           buttons: [ 'code', 'colors', 'colors-bk', 'sep', 'bold', 'italic', 'underline', 'strikeThrough', 'smallCaps', 'subscript', 'superscript', 'header', 'br',
-                    'justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', 'sep', 'insertUnorderedList', 'insertOrderedList', 'table', 'sep', 'link', 
+                    'justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', 'sep', 'insertUnorderedList', 'insertOrderedList', 'table', 'sep', 'link', 'unlink', 
                     'img', 'filmstrip','smile', 'sep', 'undo', 'redo', 'removeFormat'],
           /* colors selection from CITAR */
           colors: ['000000', '424242', '636363', '9C9C94', 'CEC6CE', 'EFEFEF', 'F7F7F7', 'FFFFFF',
@@ -77,7 +77,21 @@
               }
               if ( options.buttons[i].action == "link" ) {
                 stringToolbar += "<div class='toolbarCommonPanel' id='linkPanel'>";
-                  PANEL ENLACES 
+                stringToolbar += "<input type='text' id='js-inputLink' class='inputsToolbar inputWithIcon' placeholder='www.url.com'>";
+                stringToolbar += "<span id='submitLink' class='iconInput success icon-success'></span>"; 
+                stringToolbar += "</div>";
+              }
+              if ( options.buttons[i].action == "img" ) {
+                stringToolbar += "<div class='toolbarCommonPanel' id='imgPanel'>";
+                stringToolbar += "<input type='text' id='js-inputImg' class='inputsToolbar inputWithIcon' placeholder='CAMBIAR'>";
+                stringToolbar += "<span id='submitImg' class='iconInput success icon-success'></span>"; 
+                stringToolbar += "</div>";
+              }
+              if ( options.buttons[i].action == "smile" ) {
+                stringToolbar += "<div class='toolbarCommonPanel smilePanel'>";
+                for ( var s=0; s < 39; s++ ) {
+                  stringToolbar += "<img src='icons/"+s+".png' width='24' height='24' class='js-smile'>";                  
+                }
                 stringToolbar += "</div>";
               }
               if ( options.buttons[i].action == "colors" ) {
@@ -119,10 +133,12 @@
               case "insertOrderedList":
               case "removeFormat": // ESTE HACER MEJOR SELECCIONANDO EL TEXTO Y BORRÁNDOLO
               case "undo":
-              case "redo":
-              
-              case "unlink":  /// PENDIENTE         
+              case "redo":              
+              case "unlink":      
               document.execCommand(this.action, false, null);
+              break;
+              case "link":
+                self.linkButton(this.action);
               break;
               case "colors-bk":
               case "colors":
@@ -133,6 +149,12 @@
               break;
               case "header":         
                 self.headerButton();
+              break;
+              case "img":         
+                self.imgButton();
+              break;
+              case "smile":
+                self.smileButton($(this));
               break;
               case "code":         
                 self.showCodeButton(el);
@@ -187,6 +209,106 @@
           }
         },
 
+        linkButton: function() {
+          var self = this;
+          var linkPanel = $('#linkPanel');
+          var selObj, newNode; 
+          var selRange = null;
+          function unbindButton() {
+            linkPanel.slideUp(600).removeClass('js-active');
+            $('#submitLink').unbind('click');           
+            $('#js-inputLink').val('');
+          }
+          selObj = self.getSelection();          
+          if ( selObj.type != 'None' && selObj.isCollapsed === false ) {
+            selRange = selObj.getRangeAt(0);
+          }
+          if ( linkPanel.hasClass('js-active') ) {
+            unbindButton();
+          } else {
+            linkPanel.css('left', $('#js-link').offset().left).slideDown(600).addClass('js-active');
+            $('#submitLink').click(function() {
+              if(selRange !== null ) {
+                self.restoreSelection(selRange);
+                var href = $('#js-inputLink').val().trim().toLowerCase();
+                href = ( href.indexOf('http://') == -1 && href.indexOf('https://') == -1 ) ? 'http://'+href : href;
+                document.execCommand("createLink", false, href);
+              }          
+              unbindButton();            
+            });
+          }
+        },
+
+        imgButton: function() {
+          var self = this;
+          var imgPanel = $('#imgPanel');
+          var selObj, newNode; 
+          var selRange = null;
+          function unbindButton() {
+            imgPanel.slideUp(600).removeClass('js-active');
+            $('#submitImg').unbind('click');           
+            $('#js-inputImg').val('');
+          }
+          selObj = self.getSelection();          
+          if ( selObj.type != 'None' && selObj.isCollapsed === false ) {
+            selRange = selObj.getRangeAt(0);
+          }
+          if ( imgPanel.hasClass('js-active') ) {
+            unbindButton();
+          } else {
+            imgPanel.css('left', $('#js-img').offset().left).slideDown(600).addClass('js-active');
+            $('#submitImg').click(function() {
+              if(selRange !== null ) {
+                self.restoreSelection(selRange);
+                var route = $('#js-inputImg').val().trim();
+                //href = ( href.indexOf('http://') == -1 && href.indexOf('https://') == -1 ) ? 'http://'+href : href;
+                document.execCommand("createLink", false, href);
+              }          
+              unbindButton();            
+            });
+          }
+        },
+
+        smileButton: function(button) {
+
+          var self        = this;
+          var button      = button;
+          var smilePanel  = button.next('.smilePanel');
+          var selRange    = null;
+          var selObj, newNode, route;
+
+          function unbindButton() {
+            smilePanel.slideUp(600);
+            button.removeClass('js-active');
+            $('.js-smile').unbind('click');
+          }  
+
+          selObj = self.getSelection();
+          if ( selObj.type != 'None' ) {
+            selRange = selObj.getRangeAt(0);
+          }
+
+          if ( button.hasClass('js-active') ) {
+            unbindButton();
+
+          } else {
+            smilePanel.css('left', button.offset().left).slideDown(600);
+            button.addClass('js-active');
+            $('.js-smile').click(function() {
+              if ( selRange !== null ) {
+                self.restoreSelection(selRange);
+                route = $(this)[0].src;
+                newNode = new Image(24, 24);
+                newNode.src = route;
+                newNode.style.verticalAlign = "bottom";
+                selRange.insertNode(newNode);               
+              }          
+              unbindButton();
+            });
+          }
+
+        }, /* #smileButton */
+
         colorButton: function(action) {
           var self = this;
           var colorPanel = $('#colorsPanel');
@@ -231,9 +353,12 @@
             if ( $(this).hasClass('js-active') ) { 
               textArea.val(editor.html()).css('display','block');
               editor.css('display','none');
+              $('.js-buttons').addClass('buttonDisabled');
+              $(this).removeClass('buttonDisabled');
             } else {
               textArea.css('display','none');
               editor.html(textArea.val()).css('display','block');
+              $('.js-buttons').removeClass('buttonDisabled');
             }
           });
         },
