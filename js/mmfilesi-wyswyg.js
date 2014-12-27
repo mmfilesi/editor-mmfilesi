@@ -6,9 +6,9 @@
 
 ;(function ( $, window, document, undefined ) {
 
-    var editorMM = "editorMM",
-        defaults = {
-        	style: {'bgPrimary':'ccc', 'textPrimary':'000', 'width':'800px', 'height':'100%'},
+    var editorMM = "editorMM";
+    var defaults = {
+        	style: {'bgPrimary':'ccc', 'textPrimary': '000', 'width': '800px', 'height': '100%'},
           buttons: [ 'code', 'colors', 'colors-bk', 'sep', 'bold', 'italic', 'underline', 'strikeThrough', 'smallCaps', 'subscript', 'superscript', 'header', 'br',
                     'justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', 'sep', 'insertUnorderedList', 'insertOrderedList', 'table', 'sep', 'link', 'unlink', 
                     'img', 'filmstrip','smile', 'sep', 'undo', 'redo', 'removeFormat'],
@@ -24,11 +24,11 @@
           lang: 'es'
         };
 
-        lang = {
-        	'es': {'colors':'colores', 'colors-bk':'color de fondo', 'bold':'negrita', 'italic':'cursiva', 'underline':'subrayado', 'smallCaps':'versalitas', 'strikeThrough':'tachado', 'header':'encabezado',
-          'subscript':'subíndice', 'superscript':'superíndice',
-                'align-left':'izquierda', 'align-center':'centrado', 'align-right':'derecha', 'align-justify':'justfificado', 'list':'lista ordenada', 'list-number':'lista desordenada',
-                'link':'enlace', 'img':'imagen', 'div':'separador', 'removeFormat':'borrar estilos', 'undo':'deshacer', 'redo':'rehacer', 'code':'código', 'paragraph':'párrafo'},
+  var lang = {
+        	'es': {'colors': 'colores', 'colors-bk': 'color de fondo', 'bold': 'negrita', 'italic': 'cursiva', 'underline': 'subrayado', 'smallCaps': 'versalitas', 'strikeThrough': 'tachado', 'header': 'encabezado',
+          'subscript': 'subíndice', 'superscript': 'superíndice',
+                'align-left': 'izquierda', 'align-center': 'centrado', 'align-right': 'derecha', 'align-justify': 'justfificado', 'list': 'lista ordenada', 'list-number': 'lista desordenada',
+                'link': 'enlace', 'img': 'imagen', 'div': 'separador', 'removeFormat': 'borrar estilos', 'undo': 'deshacer', 'redo': 'rehacer', 'code': 'código', 'paragraph': 'párrafo', 'route': 'ruta', 'height': 'alto', 'width': 'ancho', 'responsive': 'responsive' },
             'eng': {}
         };
 
@@ -67,7 +67,7 @@
               stringToolbar += "<span class='icon-"+options.buttons[i].action+"'></span>";
               stringToolbar += "</button>";
               if ( options.buttons[i].action == "header" ) {
-                stringToolbar += "<div class='toolbarCommonPanel' id='headerPanel'><ul>";
+                stringToolbar += "<div class='toolbarCommonPanel headerPanel'><ul>";
                   for (var c=0; c<7; c++) {
                     stringToolbar += "<li class='js-optionHeader' data-header='"+(c+1)+"' style='font-size:"+(18-c)+"px'>";
                     stringToolbar += options.buttons[i].title + " " +(c+1);
@@ -76,15 +76,18 @@
                 stringToolbar += "</ul><p class='js-optionHeader' data-header='par'>"+lang[options.lang].paragraph+"</p></div>";
               }
               if ( options.buttons[i].action == "link" ) {
-                stringToolbar += "<div class='toolbarCommonPanel' id='linkPanel'>";
-                stringToolbar += "<input type='text' id='js-inputLink' class='inputsToolbar inputWithIcon' placeholder='www.url.com'>";
-                stringToolbar += "<span id='submitLink' class='iconInput success icon-success'></span>"; 
+                stringToolbar += "<div class='toolbarCommonPanel linkPanel'>";
+                stringToolbar += "<input type='text' class='inputsToolbar inputWithIcon js-inputLink' placeholder='www.url.com'>";
+                stringToolbar += "<span class='iconInput success icon-success submitLink'></span>"; 
                 stringToolbar += "</div>";
               }
               if ( options.buttons[i].action == "img" ) {
-                stringToolbar += "<div class='toolbarCommonPanel' id='imgPanel'>";
-                stringToolbar += "<input type='text' id='js-inputImg' class='inputsToolbar inputWithIcon' placeholder='CAMBIAR'>";
-                stringToolbar += "<span id='submitImg' class='iconInput success icon-success'></span>"; 
+                stringToolbar += "<div class='toolbarCommonPanel imgPanel'>";
+                stringToolbar += "<p><input type='text' class='inputsToolbar js-inputRoute' placeholder='"+lang[options.lang].route+"'></p>";
+                stringToolbar += "<p><input type='text' class='inputsToolbar js-inputWidth' placeholder='"+lang[options.lang].width+"'></p>";
+                stringToolbar += "<p><input type='text' class='inputsToolbar js-inputHeight' placeholder='"+lang[options.lang].height+"'></p>";
+                stringToolbar += "<p><input type='checkbox' class='js-inputResponsive'> "+lang[options.lang].responsive+"</p>";
+                stringToolbar += "<button><span id='js-submitImg' class='iconInput success icon-success'></span></button>";
                 stringToolbar += "</div>";
               }
               if ( options.buttons[i].action == "smile" ) {
@@ -113,6 +116,8 @@
           stringToolbar = stringDivEditable = null;
         },
 
+        /* HACER UN BOTÓN PARA QUE PUEDAN AÑADIR ESTILOS */
+
         toolbarBind: function(el, options) {
           var self = this;
         	$('.js-buttons').mousedown(function(event) {
@@ -135,10 +140,10 @@
               case "undo":
               case "redo":              
               case "unlink":      
-              document.execCommand(this.action, false, null);
+                document.execCommand(this.action, false, null);
               break;
               case "link":
-                self.linkButton(this.action);
+                self.linkButton($(this));
               break;
               case "colors-bk":
               case "colors":
@@ -148,10 +153,10 @@
                 self.nodeButton("span", "font-variant:small-caps;");
               break;
               case "header":         
-                self.headerButton();
+                self.headerButton($(this));
               break;
               case "img":         
-                self.imgButton();
+                self.imgButton($(this));
               break;
               case "smile":
                 self.smileButton($(this));
@@ -164,7 +169,7 @@
 
         },
 
-        nodeButton: function(node, nodeStyle) {
+        nodeButton: function(node, nodeStyle) { /* todo */ // NULLIFICAR Y TAL
           var nodeStyle = nodeStyle || 'withoutStyle';
           var selObj, selRange, newNode;          
           selObj = this.getSelection();         
@@ -181,106 +186,165 @@
           }
         },
 
-        headerButton: function() { ////////// PENDIENTE, BORRAR CABECERA CUANDO SEA UN PÁRRAFO
-          var self = this;
-          var headerPanel = $('#headerPanel');
-          var selObj, newNode; 
-          var selRange = null;
+        headerButton: function(button) { /* done */
+          
+          var self          = this;
+          var button        = button;
+          var headerPanel   = button.next('.headerPanel');
+          var selectHeader  = headerPanel.find('.js-optionHeader');
+          var selObj        = null;
+          var newNode       = null; 
+          var selRange      = null;
+                    
           function unbindButton() {
-            headerPanel.slideUp(600).removeClass('js-active');
+            headerPanel.slideUp(600);
+            button.removeClass('js-active');
             $('.js-optionHeader').unbind('click');
-            headerPanel = null;
+            button = headerPanel = selectHeader = selObj = newNode = selRange = null;
           }
+
           selObj = self.getSelection();          
+          
           if ( selObj.type != 'None' && selObj.isCollapsed === false ) {
             selRange = selObj.getRangeAt(0);
           }
-          if ( headerPanel.hasClass('js-active') ) {
+
+          if ( button.hasClass('js-active') ) {
             unbindButton();
+
           } else {
-            headerPanel.css('left', $('#js-header').offset().left).slideDown(600).addClass('js-active');
-            $('.js-optionHeader').click(function() {
+            headerPanel.css('left', $('#js-header').offset().left).slideDown(600);
+            button.addClass('js-active');
+            selectHeader.click(function() {
               if(selRange !== null ) {
                 self.restoreSelection(selRange);
-                self.nodeButton("h"+$(this).attr('data-header'));
+                if ( $(this).attr('data-header') != 'par' ) {
+                  self.nodeButton("h"+$(this).attr('data-header'));
+                } else {
+                  document.execCommand('formatBlock', false, 'p');
+                }
               }               
               unbindButton();            
             });
           }
-        },
 
-        linkButton: function() {
-          var self = this;
-          var linkPanel = $('#linkPanel');
-          var selObj, newNode; 
-          var selRange = null;
+        }, /* #headerButton */
+
+        linkButton: function(button) { /* done */
+
+          var self        = this;
+          var button      = button;
+          var linkPanel   = button.next('.linkPanel');
+          var inputLink   = linkPanel.find('.js-inputLink');
+          var submitLink  = linkPanel.find('.submitLink');
+          var selRange    = null;
+          var selObj      = null;
+          var href        = null;
+
           function unbindButton() {
-            linkPanel.slideUp(600).removeClass('js-active');
-            $('#submitLink').unbind('click');           
-            $('#js-inputLink').val('');
-          }
+            linkPanel.slideUp(600);
+            submitLink.unbind('click');
+            button.removeClass('js-active');
+            inputLink.val('');
+            button = linkPanel = inputLink = submitLink = selRange = selObj = href = null;
+          }       
+
           selObj = self.getSelection();          
           if ( selObj.type != 'None' && selObj.isCollapsed === false ) {
             selRange = selObj.getRangeAt(0);
           }
-          if ( linkPanel.hasClass('js-active') ) {
+
+          if ( button.hasClass('js-active') ) {
             unbindButton();
+            button.removeClass('js-active');
+
           } else {
-            linkPanel.css('left', $('#js-link').offset().left).slideDown(600).addClass('js-active');
-            $('#submitLink').click(function() {
-              if(selRange !== null ) {
+            button.addClass('js-active');
+            linkPanel.css('left', button.offset().left).slideDown(600);           
+            submitLink.click(function() {
+              if (selRange !== null ) {
                 self.restoreSelection(selRange);
-                var href = $('#js-inputLink').val().trim().toLowerCase();
+                href = inputLink.val().trim().toLowerCase();
                 href = ( href.indexOf('http://') == -1 && href.indexOf('https://') == -1 ) ? 'http://'+href : href;
                 document.execCommand("createLink", false, href);
               }          
               unbindButton();            
             });
           }
-        },
 
-        imgButton: function() {
-          var self = this;
-          var imgPanel = $('#imgPanel');
-          var selObj, newNode; 
-          var selRange = null;
+        }, /* #linkButton */
+
+        imgButton: function(button) { /* done */ 
+
+          var self            = this;
+          var button          = button;
+          var imgPanel        = button.next('.imgPanel');
+          var inputRoute      = imgPanel.find('.js-inputRoute');
+          var inputHeight     = imgPanel.find('.js-inputHeight');
+          var inputWidth      = imgPanel.find('.js-inputWidth');
+          var inputResponsive = imgPanel.find('.js-inputResponsive');
+          var submitImg       = imgPanel.find('.js-submitLink');
+          var selObj          = null;
+          var newNode         = null; 
+          var selRange        = null;
+
+          
           function unbindButton() {
             imgPanel.slideUp(600).removeClass('js-active');
+            button.removeClass('js-active');
+            inputResponsive.unbind('change'); 
+
             $('#submitImg').unbind('click');           
             $('#js-inputImg').val('');
           }
+          
           selObj = self.getSelection();          
           if ( selObj.type != 'None' && selObj.isCollapsed === false ) {
             selRange = selObj.getRangeAt(0);
           }
+          
           if ( imgPanel.hasClass('js-active') ) {
             unbindButton();
+
           } else {
-            imgPanel.css('left', $('#js-img').offset().left).slideDown(600).addClass('js-active');
+            imgPanel.css('left', $('#js-img').offset().left).slideDown(600);
+            button.addClass('js-active');
+            inputResponsive.change(function() {
+              if ( $(this).prop('checked') ) {
+                inputWidth.val('100%');
+                inputHeight.val('auto');
+              }
+            });  
+
+
+
             $('#submitImg').click(function() {
               if(selRange !== null ) {
                 self.restoreSelection(selRange);
                 var route = $('#js-inputImg').val().trim();
-                //href = ( href.indexOf('http://') == -1 && href.indexOf('https://') == -1 ) ? 'http://'+href : href;
                 document.execCommand("createLink", false, href);
               }          
               unbindButton();            
             });
           }
-        },
 
-        smileButton: function(button) {
+        }, /* #imgButton */
+
+        smileButton: function(button) { /* done */
 
           var self        = this;
           var button      = button;
           var smilePanel  = button.next('.smilePanel');
           var selRange    = null;
-          var selObj, newNode, route;
+          var selObj      = null;
+          var newNode     = null;
+          var route       = null;
 
           function unbindButton() {
             smilePanel.slideUp(600);
             button.removeClass('js-active');
             $('.js-smile').unbind('click');
+            selRange = selObj = newNode = route = null;
           }  
 
           selObj = self.getSelection();
@@ -289,7 +353,7 @@
           }
 
           if ( button.hasClass('js-active') ) {
-            unbindButton();
+            unbindButton();           
 
           } else {
             smilePanel.css('left', button.offset().left).slideDown(600);
@@ -309,7 +373,7 @@
 
         }, /* #smileButton */
 
-        colorButton: function(action) {
+        colorButton: function(action) { /* TODO */
           var self = this;
           var colorPanel = $('#colorsPanel');
           var selObj, newNode, atribute; 
@@ -343,7 +407,7 @@
           }
         },
 
-        showCodeButton: function(el) {
+        showCodeButton: function(el) { /* TODO */
           var textArea = $(el);
           var editor   = $('#editor-mm');
           textArea.css('width', editor.css('width')).css('height', editor.css('height')).css('box-sizing', 'border-box');
