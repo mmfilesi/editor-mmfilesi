@@ -121,11 +121,18 @@
   content: "E";
 }
 
+.icon-link:before {
+  content: "O";
+}
 
-/* */
+.icon-unlink:before {
+  content: "P";
+}
+
+/* 
 .icon-link:before {
   content: "l";
-}
+} */
 
 .icon-img:before {
   content: "m";
@@ -135,12 +142,9 @@
   content: "u";
 }
 
-
 .icon-eye-slash-close:before {
   content: "i";
 }
-
-
 
 .icon-eye:before {
   content: "h";
@@ -154,7 +158,9 @@
   content: "B";
 }
 
-
+.icon-success:before {
+  content: "X";
+}
 
 
 
@@ -271,6 +277,17 @@
   width: 260px;
 }
 
+.smilePanel {
+  width: 260px;
+  text-align: center;
+}
+
+.smilePanel img {
+  display:inline-block;
+  margin: 0.1em;
+  cursor:pointer;
+}
+
 .colorsTile {
   display:inline-block;
   width: 25px;
@@ -313,6 +330,11 @@
 
 .success {
   color: #01B225;
+}
+
+.buttonDisabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 
