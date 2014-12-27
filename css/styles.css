@@ -254,18 +254,18 @@
   display:none;
 }
 
- #headerPanel ul {
+.headerPanel ul {
   padding: 0;
   margin: 0;
   list-style: none;
   line-height: 22px
 }
 
-#headerPanel li:hover, #headerPanel p:hover {
+.headerPanel li:hover, .headerPanel p:hover {
   cursor: pointer;
 }
 
-#headerPanel p {
+.headerPanel p {
   text-align: center;
   border-top: 1px solid #ededed;
   margin-bottom: 0.1em;
@@ -273,11 +273,11 @@
   padding-top: 0.2em;
 }
 
-#colorsPanel {
+.colorsPanel {
   width: 260px;
 }
 
-.smilePanel {
+.smilePanel, .imgPanel {
   width: 260px;
   text-align: center;
 }
@@ -286,6 +286,11 @@
   display:inline-block;
   margin: 0.1em;
   cursor:pointer;
+}
+
+.imgPanel p {
+  margin-top: 0.1em;
+  margin-bottom: 0.5em;
 }
 
 .colorsTile {
