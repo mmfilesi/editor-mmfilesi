@@ -268,16 +268,52 @@
 .headerPanel p {
   text-align: center;
   border-top: 1px solid #ededed;
-  margin-bottom: 0.1em;
-  margin-top: 0.2em;
-  padding-top: 0.2em;
+  margin-bottom: .1em;
+  margin-top: .2em;
+  padding-top: .2em;
+}
+
+.imgPanel {
+  width: 250px;
+  font-size: 14px;
+}
+
+.imgPanel label {
+  display: inline-block;
+  margin-left: .3em;
+  width: 20%;
+}
+
+.imgPanel .inputLin {
+  width: 70%;
+  display: inline-block;
+}
+
+.js-inputResponsive {
+  vertical-align: middle;
+}
+
+.moreOptions {
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  text-align: center;
+  cursor: pointer;
+  padding: .2em 0;
+}
+
+.checkIcon {
+  display: inline-block;
+  width: 30px;
+  cursor: pointer;
+  vertical-align: middle;
+  margin-left: .2em;
 }
 
 .colorsPanel {
   width: 260px;
 }
 
-.smilePanel, .imgPanel {
+.smilePanel {
   width: 260px;
   text-align: center;
 }
@@ -335,6 +371,25 @@
 
 .success {
   color: #01B225;
+}
+
+.buttonDone {
+  color: #fff;
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+  display: inline-block;
+  padding: 3px 6px;
+  margin-bottom: 0;
+  margin-top: .5em;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.4;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 4px;
 }
 
 .buttonDisabled {

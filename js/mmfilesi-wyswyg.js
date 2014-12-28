@@ -4,6 +4,8 @@
  * Licensed under MIT
  */
 
+ /* Todo: botón tabla, botón vídeo, añadir opción width y height, cambiar ids x clases donde falte */
+
 ;(function ( $, window, document, undefined ) {
 
     var editorMM = "editorMM";
@@ -28,7 +30,7 @@
         	'es': {'colors': 'colores', 'colors-bk': 'color de fondo', 'bold': 'negrita', 'italic': 'cursiva', 'underline': 'subrayado', 'smallCaps': 'versalitas', 'strikeThrough': 'tachado', 'header': 'encabezado',
           'subscript': 'subíndice', 'superscript': 'superíndice',
                 'align-left': 'izquierda', 'align-center': 'centrado', 'align-right': 'derecha', 'align-justify': 'justfificado', 'list': 'lista ordenada', 'list-number': 'lista desordenada',
-                'link': 'enlace', 'img': 'imagen', 'div': 'separador', 'removeFormat': 'borrar estilos', 'undo': 'deshacer', 'redo': 'rehacer', 'code': 'código', 'paragraph': 'párrafo', 'route': 'ruta', 'height': 'alto', 'width': 'ancho', 'responsive': 'responsive' },
+                'link': 'enlace', 'img': 'imagen', 'div': 'separador', 'removeFormat': 'borrar estilos', 'undo': 'deshacer', 'redo': 'rehacer', 'code': 'código', 'paragraph': 'párrafo', 'route': 'ruta', 'height': 'alto', 'width': 'ancho', 'responsive': 'responsive', 'options': 'opciones', 'caption': 'leyenda', 'align': 'alinear', 'done': 'aceptar' },
             'eng': {}
         };
 
@@ -83,11 +85,18 @@
               }
               if ( options.buttons[i].action == "img" ) {
                 stringToolbar += "<div class='toolbarCommonPanel imgPanel'>";
-                stringToolbar += "<p><input type='text' class='inputsToolbar js-inputRoute' placeholder='"+lang[options.lang].route+"'></p>";
-                stringToolbar += "<p><input type='text' class='inputsToolbar js-inputWidth' placeholder='"+lang[options.lang].width+"'></p>";
-                stringToolbar += "<p><input type='text' class='inputsToolbar js-inputHeight' placeholder='"+lang[options.lang].height+"'></p>";
+                stringToolbar += "<p><input type='text' name='js-inputRoute' class='inputsToolbar js-inputRoute inputLin' placeholder=''><label for='js-inputRoute'>"+lang[options.lang].route+"</label></p>";
+                stringToolbar += "<p><input type='text' name='js-inputWidth' class='inputsToolbar js-inputWidth inputLin' placeholder='ie, 100px / 100%'><label for='js-inputWidth'>"+lang[options.lang].width+"</label></p>";
+                stringToolbar += "<p><input type='text' class='inputsToolbar js-inputHeight inputLin' placeholder='ie, 100px / 100%'><label for='js-inputWidth'>"+lang[options.lang].height+"</label></p>";
                 stringToolbar += "<p><input type='checkbox' class='js-inputResponsive'> "+lang[options.lang].responsive+"</p>";
-                stringToolbar += "<button><span id='js-submitImg' class='iconInput success icon-success'></span></button>";
+                stringToolbar += "<p class='moreOptions'>+</p>";
+                stringToolbar += "<div class='imgSuboptions' style='display:none;'>";
+                stringToolbar += "<p><input type='text' name='js-inputAlt' class='inputsToolbar js-inputAlt inputLin' placeholder=''><label for='js-inputAlt'>alt</label></p>";
+                stringToolbar += "<p><input type='text' name='js-inputTitle' class='inputsToolbar js-inputTitle inputLin' placeholder=''><label for='js-inputTitle'>title</label></p>";
+                stringToolbar += "<p><input type='text' class='inputsToolbar js-inputCaption inputLin' placeholder=''><label for='js-inputCaption'>"+lang[options.lang].caption+"</label></p>";
+                stringToolbar += "<p><label>"+lang[options.lang].align+"</label><span class='checkIcon icon-justifyLeft js-alignImg' data-float='left'></span><span class='checkIcon icon-justifyCenter js-alignImg' data-float='center'></span><span class='checkIcon roundButton icon-justifyRight js-alignImg' data-float='right'></span></p>";
+                stringToolbar += "</div>";
+                stringToolbar += "<p style='text-align:center;' class='js-submitImg'><button class='buttonDone'>"+lang[options.lang].done+"</button></p>";
                 stringToolbar += "</div>";
               }
               if ( options.buttons[i].action == "smile" ) {
@@ -283,46 +292,97 @@
           var inputHeight     = imgPanel.find('.js-inputHeight');
           var inputWidth      = imgPanel.find('.js-inputWidth');
           var inputResponsive = imgPanel.find('.js-inputResponsive');
-          var submitImg       = imgPanel.find('.js-submitLink');
+          var inputAlt        = imgPanel.find('.js-inputAlt');
+          var inputTitle      = imgPanel.find('.js-inputTitle');
+          var inputCaption    = imgPanel.find('.js-inputCaption');
+          var alignImg        = imgPanel.find('.js-alignImg');
+          var moreOptions     = imgPanel.find('.moreOptions');
+          var submitImg       = imgPanel.find('.js-submitImg');
+          var imgSuboptions   = imgPanel.find('.imgSuboptions');
           var selObj          = null;
           var newNode         = null; 
           var selRange        = null;
-
+          var stringImg       = null;
           
           function unbindButton() {
             imgPanel.slideUp(600).removeClass('js-active');
             button.removeClass('js-active');
-            inputResponsive.unbind('change'); 
-
-            $('#submitImg').unbind('click');           
-            $('#js-inputImg').val('');
+            inputResponsive.unbind('click').prop('checked', false); 
+            moreOptions.unbind('click').text('+');            
+            submitImg.unbind('click');
+            alignImg.unbind('click');
+            inputRoute.val('');
+            inputHeight.val('');
+            inputWidth.val('');
+            inputAlt.val('');
+            inputTitle.val('');
+            inputCaption.val('');
+            imgSuboptions.css('display','none');
+            alignImg.removeClass('js-active').removeClass('success');
+            selObj = newNode = selRang = stringImg = null;
           }
           
           selObj = self.getSelection();          
-          if ( selObj.type != 'None' && selObj.isCollapsed === false ) {
+          if ( selObj.type != 'None' ) {
             selRange = selObj.getRangeAt(0);
           }
           
-          if ( imgPanel.hasClass('js-active') ) {
+          if ( button.hasClass('js-active') ) {
             unbindButton();
 
           } else {
-            imgPanel.css('left', $('#js-img').offset().left).slideDown(600);
+            imgPanel.css('left', button.offset().left).slideDown(600);
             button.addClass('js-active');
-            inputResponsive.change(function() {
+           
+            inputResponsive.click(function() {
               if ( $(this).prop('checked') ) {
                 inputWidth.val('100%');
                 inputHeight.val('auto');
+              }              
+            });
+
+            moreOptions.click(function() {
+              if ( $(this).hasClass('js-active') ) {
+                imgSuboptions.slideUp('fast', function() {
+                  moreOptions.text('+').removeClass('js-active');
+                });
+              } else {
+                imgSuboptions.slideDown('fast', function() {
+                  moreOptions.text('-').addClass('js-active');
+                });
               }
-            });  
+            });
 
+            alignImg.click(function() {              
+              if ( $(this).hasClass('js-active') ) {
+                $(this).removeClass('js-active').removeClass('success');
+              } else {
+                alignImg.removeClass('js-active').removeClass('success');
+                $(this).addClass('js-active').addClass('success');
+              }
+            });
 
-
-            $('#submitImg').click(function() {
-              if(selRange !== null ) {
+            submitImg.click(function() {
+              var temp;
+              if( selRange !== null ) {
                 self.restoreSelection(selRange);
-                var route = $('#js-inputImg').val().trim();
-                document.execCommand("createLink", false, href);
+                temp = imgSuboptions.find('.js-active').attr('data-float');
+                console.log(temp)
+                console.log(imgSuboptions.find('.js-active'))
+                if ( temp == 'left' ) {
+                  temp = "style='float:left;'";
+                } else if ( temp == 'right' ) {
+                  temp = "style='float:right;'";
+                } else if ( temp == 'center' ) {
+                  temp = "style='margin: 0 auto; text-align:center;'";
+                } else {
+                  temp = "";
+                }
+                stringImg = "<figure "+temp+">";
+                stringImg += "<img src='"+inputRoute.val()+"' width='"+inputWidth.val()+"' height='"+inputHeight.val()+"' alt='"+inputAlt.val()+"' title='"+inputTitle.val()+"'>";
+                if ( inputCaption.val() != '' ) stringImg += "<figcaption>"+inputCaption.val()+"</figcaption>"
+                stringImg += "</figure>";
+                self.insertHtmlAfterSelection(stringImg);                
               }          
               unbindButton();            
             });
@@ -430,7 +490,7 @@
         getSelection: function() {
           if (window.getSelection) {
               return window.getSelection();
-          } else { /* IE old */
+          } else {
               if (document.selection.createRange) {
                   return document.selection.createRange();                        
               }
@@ -449,6 +509,44 @@
                 }
             selection.addRange(selRange);
             }
+        },
+
+        /* Function by Tim Down 
+        http://stackoverflow.com/questions/3597116/insert-html-after-a-selection */
+        insertHtmlAfterSelection: function(html) {
+          var sel, range, expandedSelRange, node;
+          if (window.getSelection) {
+              sel = window.getSelection();
+              if (sel.getRangeAt && sel.rangeCount) {
+                  range = window.getSelection().getRangeAt(0);
+                  expandedSelRange = range.cloneRange();
+                  range.collapse(false);
+
+                  // Range.createContextualFragment() would be useful here but is
+                  // non-standard and not supported in all browsers (IE9, for one)
+                  var el = document.createElement("div");
+                  el.innerHTML = html;
+                  var frag = document.createDocumentFragment(), node, lastNode;
+                  while ( (node = el.firstChild) ) {
+                      lastNode = frag.appendChild(node);
+                  }
+                  range.insertNode(frag);
+
+                  // Preserve the selection
+                  if (lastNode) {
+                      expandedSelRange.setEndAfter(lastNode);
+                      sel.removeAllRanges();
+                      sel.addRange(expandedSelRange);
+                  }
+              }
+          } else if (document.selection && document.selection.createRange) {
+              range = document.selection.createRange();
+              expandedSelRange = range.duplicate();
+              range.collapse(false);
+              range.pasteHTML(html);
+              expandedSelRange.setEndPoint("EndToEnd", range);
+              expandedSelRange.select();
+          }
         }
 
     }
