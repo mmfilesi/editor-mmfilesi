@@ -423,53 +423,13 @@ sub {
   bottom: -0.25em;
 }
 
+.editor-mm div {
+  margin-top: .5em;
+  margin-bottom: .5em;
+}
 
 /* Special cases */
 
 #js-code {
   float:right;
 }
-
-
-
-/* Ajustar */
-
-.js-titularSecccion {
-  padding:0.2em;
-}
-
-/*
-
-#paletaColor {
-  z-index: 10001;
-  position: absolute;
-  width: 202px;
-  height: 220px;
-  background: #EDEDED;
-  display: none;
-  padding: 10px;
-}
-
-#paletaTabla {
-  z-index: 10001;
-  position: absolute;
-  width: 202px;
-  height: 220px;
-  background: #EDEDED;
-  right: 425px;
-  display: none;
-  padding: 10px;
-} */
-
-/*
-.rotulosPaleta {
-  font-size: 0.7em;
-  line-height: 14px;
-  color: #66635f;
-}
-
-.rotulosPaleta:hover {
-  color: #66635f;
-}
-
-*/
