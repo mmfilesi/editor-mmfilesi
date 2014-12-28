@@ -1,30 +1,67 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>tiny editor wyswyg mmfilesi - demo</title>
-        <meta name="description" content="tiny editor wyswyg mmfilesi - demo">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" href="css/styles.css" media="screen" />
-    </head>
 
-  <body>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <title>Editor-mmfilesi by mmfilesi</title>
 
-    <textarea id="foo">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </textarea>
+  <link rel="stylesheet" href="stylesheets/styles.css">
+  <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <link rel="stylesheet" type="text/css" href="css/styles.css" media="screen" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
 
-    <script src="js/vendor/jquery.min.js"></script>        
-    <script src="js/mmfilesi-wyswyg.js"></script>
+<body>
+  <div class="wrapper">
 
-    <script>
-    $(document).ready(function () {
-        var options = {};
-        $('#foo').editorMM(options);  
+    <header>
+      <h1>Editor-mmfilesi</h1>
+      <p>jquery plugin - editor wyswyg</p>
+      <p class="view"><a href="https://github.com/mmfilesi/editor-mmfilesi">View the Project on GitHub <small>mmfilesi/editor-mmfilesi</small></a>
+      </p>
+      <ul>
+        <li><a href="https://github.com/mmfilesi/editor-mmfilesi/zipball/master">Download <strong>ZIP File</strong></a>
+        </li>
+        <li><a href="https://github.com/mmfilesi/editor-mmfilesi/tarball/master">Download <strong>TAR Ball</strong></a>
+        </li>
+        <li><a href="https://github.com/mmfilesi/editor-mmfilesi">View On <strong>GitHub</strong></a>
+        </li>
+      </ul>
+    </header>
+
+    <section>
+      <h3>IN WORK... :P</h3>
+
+      <textarea id="foo">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</textarea>
+      <a href="www.mmfilesi.com">www.mmfilesi.com</a>
+    </section>
+
+    <footer>
+      <p>This project is maintained by <a href="https://github.com/mmfilesi">mmfilesi</a>
+      </p>
+      <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small>
+      </p>
+    </footer>
+  </div>
+  <script src="javascripts/scale.fix.js"></script>
+
+
+  <script src="js/vendor/jquery.min.js"></script>
+  <script src="js/mmfilesi-wyswyg.js"></script>
+
+  <script>
+    $(document).ready(function() {
+      var options = {};
+      options.buttons = [ 'code', 'colors', 'colors-bk', 'sep', 'bold', 'italic', 'underline', 'strikeThrough', 'smallCaps', 'subscript', 'superscript', 'header', 'justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', 'sep', 'insertUnorderedList', 'insertOrderedList', 'table', 'sep', 'br', 'link', 'unlink', 'img', 'filmstrip','smile', 'sep', 'undo', 'redo', 'removeFormat'],
+      $('#foo').editorMM(options);
     });
-    </script>
-<a href="www.mmfilesi.com">www.mmfilesi.com</a>
+  </script>
+  
 
-<img src="icons/Grin.png" width="32" height="32">
-  </body>
+</body>
 
 </html>
