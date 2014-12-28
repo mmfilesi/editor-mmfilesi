@@ -14,23 +14,26 @@
           buttons: [ 'code', 'colors', 'colors-bk', 'sep', 'bold', 'italic', 'underline', 'strikeThrough', 'smallCaps', 'subscript', 'superscript', 'header', 'br',
                     'justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', 'sep', 'insertUnorderedList', 'insertOrderedList', 'table', 'sep', 'link', 'unlink', 
                     'img', 'filmstrip','smile', 'sep', 'undo', 'redo', 'removeFormat'],
-          /* colors selection from CITAR */
-          colors: ['000000', '424242', '636363', '9C9C94', 'CEC6CE', 'EFEFEF', 'F7F7F7', 'FFFFFF',
-                  'FF0000', 'FF9C00', 'FFFF00', '00FF00', '00FFFF', '0000FF', '9C00FF', 'FF00FF',
-                  'F7C6CE', 'FFE7CE', 'FFEFC6', 'D6EFD6', 'CEDEE7', 'CEE7F7', 'D6D6E7', 'E7D6DE',
-                  'E79C9C', 'FFC69C', 'FFE79C', 'B5D6A5', 'A5C6CE', '9CC6EF', 'B5A5D6', 'D6A5BD',
-                  'E76363', 'F7AD6B', 'FFD663', '94BD7B', '73A5AD', '6BADDE', '8C7BC6', 'C67BA5',
-                  'CE0000', 'E79439', 'EFC631', '6BA54A', '4A7B8C', '3984C6', '634AA5', 'A54A7B',
-                  '9C0000', 'B56308', 'BD9400', '397B21', '104A5A', '085294', '311873', '731842',
-                  '630000', '7B3900', '846300', '295218', '083139', '003163', '21104A', '4A1031'],
+
+          colors: [ '000000', '404040', '636363', '808080', 'A0A0A0', 'C0C0C0', 'E0E0E0', 'FFFFFF',
+                    '660033', '99004C', 'CC0066', 'FF007F', 'FF3399', 'FF66B2', 'FF99CC', 'FFCCE5',
+                    '660066', '990099', 'CC00CC', 'FF00FF', 'FF33FF', 'FF66FF', 'FF99FF', 'FFCCCC',
+                    '330066', '4C0099', '6600CC', '7F00FF', '9933FF', 'B266FF', 'CC99FF', 'E5CCFF',
+                    '000066', '000099', '0000CC', '0000FF', '3333FF', '6666FF', '9999FF', 'CCCCFF',
+                    '003366', '004C99', '0055CC', '0080FF', '3399FF', '66B2FF', '99CCFF', 'CCE5FF',
+                    '006666', '009999', '00CCCC', '00FFFF', '33FF99', '66FFB2', '99FFCC', 'CCFFE5',
+                    '006600', '009900', '00CC00', '00FF00', '99FF33', 'B2FF66', 'CCFF99', 'E5FFCC',
+                    '336600', '4C9900', '66CC00', '999900', 'CCCC00', 'FFFF00', 'FFFF99', 'FFFFCC',
+                    '663300', '994C00', 'CC6600', 'FF8000', 'FF9933', 'FFB266', 'FFCC99', 'FFE5CC',
+                    '660000', '990000', 'CC0000', 'FF0000', 'FF3333', 'FF6666', 'FF9999', 'FFCCCC' ],
           lang: 'es'
         };
 
   var lang = {
-        	'es': {'colors': 'colores', 'colors-bk': 'color de fondo', 'bold': 'negrita', 'italic': 'cursiva', 'underline': 'subrayado', 'smallCaps': 'versalitas', 'strikeThrough': 'tachado', 'header': 'encabezado',
-          'subscript': 'subíndice', 'superscript': 'superíndice',
-                'align-left': 'izquierda', 'align-center': 'centrado', 'align-right': 'derecha', 'align-justify': 'justfificado', 'list': 'lista ordenada', 'list-number': 'lista desordenada',
-                'link': 'enlace', 'img': 'imagen', 'div': 'separador', 'removeFormat': 'borrar estilos', 'undo': 'deshacer', 'redo': 'rehacer', 'code': 'código', 'paragraph': 'párrafo', 'route': 'ruta', 'height': 'alto', 'width': 'ancho', 'responsive': 'responsive', 'options': 'opciones', 'caption': 'leyenda', 'align': 'alinear', 'done': 'aceptar' },
+            'es': { 'colors': 'colores', 'colors-bk': 'color de fondo', 'bold': 'negrita', 'italic': 'cursiva', 'underline': 'subrayado', 'smallCaps': 'versalitas', 'strikeThrough': 'tachado', 'header': 'encabezado',
+                  'subscript': 'subíndice', 'superscript': 'superíndice', 'align-left': 'izquierda', 'align-center': 'centrado', 'align-right': 'derecha', 'align-justify': 'justfificado', 'list': 'lista ordenada', 'list-number': 'lista desordenada',
+                  'link': 'enlace', 'img': 'imagen', 'div': 'separador', 'removeFormat': 'borrar estilos', 'undo': 'deshacer', 'redo': 'rehacer', 'code': 'código', 'paragraph': 'párrafo', 'route': 'ruta', 'height': 'alto', 'width': 'ancho', 
+                  'responsive': 'responsive', 'options': 'opciones', 'caption': 'leyenda', 'align': 'alinear', 'done': 'aceptar' },
             'eng': {}
         };
 
@@ -107,12 +110,21 @@
                 stringToolbar += "</div>";
               }
               if ( options.buttons[i].action == "colors" ) {
-                stringToolbar += "<div class='toolbarCommonPanel' id='colorsPanel'>";
+                stringToolbar += "<div class='toolbarCommonPanel colorsPanel'>";
                   for ( var d=0, led = options.colors.length; d<led; d++) {
                       stringToolbar += "<div class='colorsTile js-optionColor' style='background:#"+options.colors[d]+"' data-color="+options.colors[d]+"></div>";
                   } 
                 stringToolbar += "</div>";
               }
+              if ( options.buttons[i].action == "colors-bk" ) { /* Quizás debería unificarlo con la anterior... ver más adelante. todo */
+                stringToolbar += "<div class='toolbarCommonPanel colorsPanel'>";
+                  for ( var d=0, led = options.colors.length; d<led; d++) {
+                      stringToolbar += "<div class='colorsTile js-optionColor' style='background:#"+options.colors[d]+"' data-color="+options.colors[d]+"></div>";
+                  } 
+                stringToolbar += "</div>";
+              }
+
+              
             } else if (options.buttons[i].action == "br") {
               stringToolbar += "<br>";
             } else {
@@ -120,7 +132,7 @@
             }
         	}
           stringToolbar += "</div>";          
-          stringDivEditable = "<div id='editor-mm' contenteditable='true' style='width:"+options.style.width+"'>"+ $(el).val()+"</div>";
+          stringDivEditable = "<div id='editor-mm' class='editor-mm' contenteditable='true' style='width:"+options.style.width+"'>"+ $(el).val()+"</div>";
           $(el).before(stringToolbar+stringDivEditable).hide();
           stringToolbar = stringDivEditable = null;
         },
@@ -155,8 +167,10 @@
                 self.linkButton($(this));
               break;
               case "colors-bk":
+                self.bkcolorButton($(this));
+              break;
               case "colors":
-                self.colorButton(this.action);
+                self.colorButton($(this));
               break;
               case "smallCaps":               
                 self.nodeButton("span", "font-variant:small-caps;");
@@ -433,39 +447,87 @@
 
         }, /* #smileButton */
 
-        colorButton: function(action) { /* TODO */
-          var self = this;
-          var colorPanel = $('#colorsPanel');
-          var selObj, newNode, atribute; 
-          var selRange = null;
+        colorButton: function(button) { /* TODO: que se pueda escribir desde cero con un color */
+          var self          = this;
+          var button        = button;
+          var colorPanel    = button.next('.colorsPanel');
+          var optionColor   = colorPanel.find('.js-optionColor')
+          var selObj        = null;
+          var atribute      = null;
+          var selRange      = null;
 
           function unbindButton() {
-            colorPanel.slideUp(600).removeClass('js-active');
-            $('.js-optionColor').unbind('click');
+            colorPanel.slideUp(600);
+            button.removeClass('js-active');
+            optionColor.unbind('click');
+            colorPanel = optionColor = selObj = atribute = selRange;
           }
+
           selObj = self.getSelection();          
-          if ( selObj.type != 'None' && selObj.isCollapsed === false ) {
+          if ( selObj.type != 'None' ) {
             selRange = selObj.getRangeAt(0);
           }
 
-          if ( colorPanel.hasClass('js-active') ) {
+          if ( button.hasClass('js-active') ) {
             unbindButton();
+
           } else {
-            colorPanel.css('left', $('#js-colors').offset().left).slideDown(600).addClass('js-active');
-            $('.js-optionColor').click(function() {
+            colorPanel.css('left', button.offset().left).slideDown(600);
+            button.addClass('js-active');
+            optionColor.click(function() {
               if(selRange !== null ) {
                 self.restoreSelection(selRange);
-                if ( action == "colors" ) {
-                  atribute = "color:#"+$(this).attr('data-color')+";"
-                } else {
-                  atribute = "background:#"+$(this).attr('data-color')+";"
-                }
-                self.nodeButton("span", atribute);
+                /* Esto genera un tag font, deprecated.... ver con calma */
+                document.execCommand('styleWithCSS', false, true);
+                document.execCommand("foreColor",false,"#"+$(this).attr('data-color') );
+                //atribute = "color:#"+$(this).attr('data-color')+";"                
+                //self.nodeButton("span", atribute);
               }
               unbindButton();            
             });
           }
-        },
+        }, /* #colorButton */
+
+        bkcolorButton: function(button) { /* todo. Unificar con la anterior */
+          var self          = this;
+          var button        = button;
+          var colorPanel    = button.next('.colorsPanel');
+          var optionColor   = colorPanel.find('.js-optionColor')
+          var selObj        = null;
+          var atribute      = null;
+          var selRange      = null;
+
+          function unbindButton() {
+            colorPanel.slideUp(600);
+            button.removeClass('js-active');
+            optionColor.unbind('click');
+            colorPanel = optionColor = selObj = atribute = selRange;
+          }
+
+          selObj = self.getSelection();          
+          if ( selObj.type != 'None' ) {
+            selRange = selObj.getRangeAt(0);
+          }
+
+          if ( button.hasClass('js-active') ) {
+            unbindButton();
+
+          } else {
+            colorPanel.css('left', button.offset().left).slideDown(600);
+            button.addClass('js-active');
+            optionColor.click(function() {
+              if(selRange !== null ) {
+                self.restoreSelection(selRange);
+                /* Esto genera un tag font, deprecated.... ver con calma */
+                //document.execCommand('styleWithCSS', false, true);
+                document.execCommand("backColor",false,"#"+$(this).attr('data-color') );
+                //atribute = "background:#"+$(this).attr('data-color')+";"                
+                //self.nodeButton("span", atribute);
+              }
+              unbindButton();            
+            });
+          }
+        }, /* #colorButton */
 
         showCodeButton: function(el) { /* TODO */
           var textArea = $(el);
