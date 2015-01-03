@@ -36,8 +36,11 @@
     <section>
       <h3>IN WORK... :P</h3>
 
+
       <textarea id="foo">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</textarea>
       <a href="www.mmfilesi.com">www.mmfilesi.com</a>
+      <button id="js-Demo">Submit</button>
+
     </section>
 
     <footer>
@@ -56,8 +59,12 @@
   <script>
     $(document).ready(function() {
       var options = {};
-      options.buttons = [ 'code', 'colors', 'colors-bk', 'sep', 'bold', 'italic', 'underline', 'strikeThrough', 'smallCaps', 'subscript', 'superscript', 'header', 'justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull', 'sep', 'insertUnorderedList', 'insertOrderedList', 'table', 'sep', 'br', 'link', 'unlink', 'img', 'filmstrip','smile', 'sep', 'undo', 'redo', 'removeFormat'],
       $('#foo').editorMM(options);
+    });
+
+    $('#js-Demo').click(function(){
+      var content =  $('#foo').val();
+      $('#foo').after('<p>Envías al server: </p>'+content);
     });
   </script>
   
