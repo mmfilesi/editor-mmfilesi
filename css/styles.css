@@ -12,7 +12,8 @@
 
 }
 
-/* Icons FORM CITAAAAAAAAAAAAAAAAAAAAAAR */
+/* Icons by Dave Gandy
+  http://fortawesome.github.io/Font-Awesome */
 
 [data-icon]:before {
   font-family: "editor-icons" !important;
@@ -129,11 +130,6 @@
   content: "P";
 }
 
-/* 
-.icon-link:before {
-  content: "l";
-} */
-
 .icon-img:before {
   content: "m";
 }
@@ -162,23 +158,12 @@
   content: "X";
 }
 
-
-
-
-/* */
-
-
-
-
-
-/* ************* */
 .icon-clock:before {
   content: "f";
 }
 .icon-cursor-move:before {
   content: "g";
 }
-
 
 .icon-paper-clip:before {
   content: "l";
@@ -199,11 +184,9 @@
   content: "v";
 }
 
-
-
 /* Editor */
 
-#editor-mm {
+.editor-mm {
   border-left: 1px solid #C2C2C2;
   border-right: 1px solid #EDEDED;
   border-bottom: 1px solid #EDEDED;
@@ -273,18 +256,18 @@
   padding-top: .2em;
 }
 
-.imgPanel {
+.imgPanel, .videoPanel {
   width: 250px;
   font-size: 14px;
 }
 
-.imgPanel label {
+.imgPanel label, .videoPanel label {
   display: inline-block;
   margin-left: .3em;
   width: 20%;
 }
 
-.imgPanel .inputLin {
+.imgPanel .inputLin, , .videoPanel .inputLin {
   width: 70%;
   display: inline-block;
 }
@@ -324,7 +307,7 @@
   cursor:pointer;
 }
 
-.imgPanel p {
+.imgPanel p, .videoPanel p {
   margin-top: 0.1em;
   margin-bottom: 0.5em;
 }
@@ -421,15 +404,4 @@ sup {
  
 sub {
   bottom: -0.25em;
-}
-
-.editor-mm div {
-  margin-top: .5em;
-  margin-bottom: .5em;
-}
-
-/* Special cases */
-
-#js-code {
-  float:right;
 }
