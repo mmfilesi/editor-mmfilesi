@@ -1,0 +1,1395 @@
+/*
+Theme Name: The Bit Jazz Band
+Theme URI: 
+Author: mmfilesi
+Author URI: http://www.mmfilesi.com
+Description: Theme of mmfilesi web.
+Version: 2.0
+License: GNU General Public License
+Tags: html5, sidebar, microdata, responsive web design
+*/
+
+
+
+/*! normalize.css v2.0.1 | MIT License | git.io/normalize */
+
+/* ==========================================================================
+   HTML5 display definitions
+   ========================================================================== */
+
+/*
+ * Corrects `block` display not defined in IE 8/9.
+ */
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section,
+summary {
+    display: block;
+}
+
+/*
+ * Corrects `inline-block` display not defined in IE 8/9.
+ */
+
+audio,
+canvas,
+video {
+    display: inline-block;
+}
+
+/*
+ * Prevents modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+
+audio:not([controls]) {
+    display: none;
+    height: 0;
+}
+
+/*
+ * Addresses styling for `hidden` attribute not present in IE 8/9.
+ */
+
+[hidden] {
+    display: none;
+}
+
+/* ==========================================================================
+   Estructura
+   ========================================================================== */
+
+body {
+  background: #fbfbfb;
+  background-image:url('img/fondo50.png');
+  background-repeat:repeat;
+}
+
+/*contenedor general*/
+
+ /* #wrap {
+  max-width: 1024px; 
+  margin: 0 auto;
+  font-family: thebit, Verdana, Arial, Helvetica, sans-serif;
+   } */
+
+  #wrap {
+  max-width: 1124px; 
+  margin: 0 auto;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  line-height: 160%;
+   } 
+
+/*cabecera*/
+
+#cabecera_principal {
+  overflow: hidden;
+  width: 100%; 
+  }
+
+#main {
+  overflow: hidden;
+  width: 100%; 
+  margin-top:2em;
+  font-size: 16px;
+  }
+
+#js-ultimosArticulos {
+  border-radius: 20px;
+  border-bottom: 1px solid #C3C3C3;
+  border-right: 1px solid #C3C3C3;
+  border-top: 1px solid #F1F1F1;
+  border-left: 1px solid #F1F1F1;;
+} 
+
+.entradasDestacadas {
+  padding: 0.6em;
+  box-sizing: border-box;
+  margin: 1em;
+  font-size: 16px;
+  /*display: none;*/
+}
+
+.sidebarCapsulas {
+  padding: 15px;
+  margin: 1em 0;
+  border: 1px solid #eee;
+  border-left-width: 5px;
+  border-radius: 6px;
+  font-size: 13px;
+  box-sizing: border-box;
+    -webkit-box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.60);
+    -moz-box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.60);
+  box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.60);
+}
+
+.sidebarCapsulas-verdeClaro {
+  border-left-color: #D21010;
+}
+
+.sidebarCapsulas h4 {
+  margin-top: 0px;
+  margin-bottom: 10px;
+  color: 999999;
+}
+
+.capsulaLayout {
+  margin: 0.5em -0.5em;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+.capsulaLayout p {
+  padding: 0.5em;
+}
+/* .capsulaLayout img {
+  max-width: 250px !important;
+} */
+
+#contenedorCategorias {
+  border-top: 1px dotted #969696;
+  border-bottom: 1px dotted #666;
+  padding: 0.5em;
+  font-weight: bold;
+  color: #666;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.js-filtroCategorias {
+  cursor: pointer;
+}
+
+.js-filtroCategorias:hover {
+  color: #D21010;
+  text-decoration: none;
+}
+
+/* border: 1px dotted #ff9900; 
+padding: 0.5em;
+font-weight: bold;
+color: #BE480A;
+background: #00992B;
+color: #fff;
+border-radius: 10px; */
+
+@media screen and (max-width:460px) { 
+  .capsulaLayoutContenedorResp {
+    margin: 0.5em;
+    width: 90% !important;
+  }
+}
+
+#layoutMain {  
+  margin-left: 2em;
+}
+
+.botonesRedondos {
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
+  border-top: 1px solid #FFC632;
+  border-bottom: 1px solid #D21010;
+  cursor: pointer;
+  text-align: center;
+  vertical-align: middle;
+  padding-top: 8px;
+  padding-left: 3px;
+  background: #FFF;
+  color: #D21010;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.botonesRedondos:hover {
+  border-top: 1px solid #ededed;
+  border-bottom: 1px solid #ccc;  
+  color: #666;
+}
+
+.listasVerticales {
+  list-style-type: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+.listasVerticales li {
+  padding-top: 0.3em;
+  padding-bottom: 0.3em;
+}
+
+.listasVerticales li {
+  padding-top: 0.3em;
+  padding-bottom: 0.3em;
+}
+
+.listasVerticales li:nth-child(even) {
+  border-top: 1px solid #ededed;
+  border-bottom: 1px solid #DFDFDF;
+}
+
+.listasVerticales li:nth-child(odd) {
+  
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+#js-pausaCarrousel {
+  float: right;
+  margin: 1em;
+  border-top: 1px solid #ededed;
+  border-left: 1px solid #ededed;
+  border-bottom: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-radius: 24px;
+  width: 24px;
+  height: 24px;
+  text-align: center;
+  color: #808080;
+  cursor: pointer;
+  padding-left: 0.2em;
+}
+
+#js-pausaCarrousel:hover {
+  color: #D21010;  
+}
+
+.vTop {
+  vertical-align: top;
+}
+
+/* SIN REVISAR */
+
+
+/* ==========================================================================
+   Layouts
+   ========================================================================== */
+
+.layout_contenedor {
+  overflow: hidden;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* 2 columnas */
+
+.layout_2cols_col_izda {
+  float:left;
+  width: 70%; 
+  margin-right: 4.5%;
+}
+
+.layout_2cols_col_dcha {
+  float:right;
+  width: 25%;
+}
+
+
+.layout_2cols_med_col_izda {
+  float:left;
+  width: 49%; 
+  margin-right: 2%;
+}
+
+.layout_2cols_med_col_dcha {
+  float:right;
+  width: 48%;
+}
+
+.columna_estrecha {
+  width:95%;
+}
+
+@media screen and (max-width:360px) { 
+      .layout_2cols_col_izda {
+      float:none;
+      width: 100%; 
+      margin: 0 auto; 
+    }
+    .layout_2cols_col_dcha {
+      float:none;
+      width: 100%; 
+      margin: 0 auto;
+    }
+  }
+
+/* 3 columnas */
+
+.layout_3cols_modulo {   
+  width:31%; 
+  margin-left:1%;
+  margin-rigth:1%;
+  margin-bottom:0.5em; 
+  display:inline-block;
+  vertical-align: top;
+  *display: inline; /* leading asterisk IS correct */
+    zoom: 1; /* seems to fix drawing bug on border in IE 7 */
+  }  
+
+/* Responsive */
+
+@media screen and (max-width:420px){ 
+  .layout_3cols_modulo {   
+    width:95%; 
+    margin-left:1%;
+    margin-rigth:1%;
+    margin-bottom:0.5em; 
+    display:inline-block;
+    vertical-align: top;
+    *display: inline; /* leading asterisk IS correct */
+      zoom: 1; /* seems to fix drawing bug on border in IE 7 */
+  } 
+}
+
+
+/* Displays */
+
+.en_linea {  
+  vertical-align: top;  
+  } 
+
+ul.en_linea {
+  list-style-type:none; 
+  width: 100%;
+  }
+
+ul.en_linea li {  
+    display: inline-block;
+    margin-right: -0.2em;
+    zoom: 1; /* IE7 (hasLayout)*/
+    *display: inline; /* IE */ 
+  }
+
+/* ==========================================================================
+   Márgenes y paddings
+   ========================================================================== */
+
+.margenes_verticales_peques {
+  margin-top:0.5em;
+  margin-bottom:0.5em;
+  }
+
+.margenes_verticales {
+  margin-top:1em;
+  margin-bottom:1em;
+  }
+
+.padding_peque {
+  padding: 0.3em;
+  } 
+
+ .padding_medio {
+  padding: 0.6em;
+  }  
+
+ .padding_grande {
+  padding: 1em;
+  } 
+
+.padding_horizontal_derecha {
+  padding-right: 3em;
+  }  
+
+/* ==========================================================================
+    Anchos y altos
+   ========================================================================== */  
+
+ .altura_21em {
+  height: 21em;
+  overflow: hidden;
+ }
+
+ .altura_20em {
+  height: 20em;
+  overflow: hidden;
+ }
+
+   .altura_19em {
+  height: 19em;
+  overflow: hidden;
+ }  
+
+  .altura_18em {
+  height: 18em;
+  overflow: hidden;
+ }  
+
+.ancho100 {
+ width: 100%;
+ }  
+
+.ancho50 {
+ width: 50%;
+ }  
+
+
+/* ==========================================================================
+   Bordes
+   ========================================================================== */
+
+.bordes_grises {
+  border-top:1px solid #ededed; 
+  border-left:1px solid #ededed; 
+  border-right:1px solid #ccc; 
+  border-bottom:1px solid #ccc;
+  }
+
+.bordes_grises_invertidos {
+  border-top: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ededed;
+  border-bottom:1px solid #ededed;  
+  } 
+
+.bordes_amarillos {
+  border-top: 1px solid #ffff00;
+  border-left: 1px solid #ffff00;
+  border-right: 1px solid #ff9900;
+  border-bottom:1px solid #ff9900;  
+  }   
+
+.bordes_verdes {
+  border-top: 1px solid #D21010;
+  border-left: 1px solid #D21010;
+  border-bottom: 1px solid #D21010;
+  border-right: 1px solid #D21010;
+  } 
+
+.bordes_naranjas {
+  border-top: 1px solid #D21010;
+  border-left: 1px solid #F93;
+  border-bottom: 1px solid #C60;
+  border-right: 1px solid #C60;
+  }   
+
+.borde_inferior_gris {
+  border-bottom: 1px dotted #CCC;
+  padding-bottom: 0.2em;
+  margin-bottom: 0.5em;
+  }
+
+ .borde_superior_gris {
+  border-top: 1px dotted #CCC;
+  padding-top: 0.2em;
+  margin-top: 0.5em;
+  } 
+
+ .borde_inferior_rojo {
+  border-bottom: 1px dotted #cc3300;
+  padding-bottom: 0.3em;
+  margin-bottom: 0.5em;
+  } 
+
+ .borde_inferior_verde {
+  border-bottom: 1px dotted #D21010;
+  padding-bottom: 0.4em;
+  margin-bottom: 0.5em;
+  }  
+
+ .borde_superior_verde {
+  border-top: 1px dotted #D21010;
+  padding-top: 0.4em;
+  margin-top: 0.5em;
+  }  
+
+ .bandas_verdes {
+  border-top: 1px dotted #D21010;
+  border-bottom: 1px dotted #D21010;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  }    
+
+ .borde_derecha_verde {
+  border-right: 1px solid #D21010;  
+  }
+
+/* ==========================================================================
+   Esquinas
+   ========================================================================== */     
+
+ .esquinas_redondeadas_muy_peques {
+  border-radius:10px; 
+  } 
+
+.esquinas_redondeadas_peques {
+  border-radius:20px; 
+  }
+
+.esquinas_redondeadas_grandes {
+  border-radius:40px; 
+  }
+
+/* ==========================================================================
+   Fondos
+   ========================================================================== */  
+
+.fondo_blanco {
+ background-color: #fff;
+  } 
+
+.fondo_blanco_gris {
+ background-color: #edebeb;
+  }  
+
+.fondo_allo_claro {
+  background-color: #f4f6e5; 
+  }
+
+.fondo_allo_oscuro {
+ background-color: #ffff00;
+  }
+
+ .fondo_verde_claro {
+  background-color: #ebf5e0;
+  } 
+
+ .fondo_verde_manzana {
+  background-color: #99cc00 ;
+  } 
+ 
+ .fondo_adorno-izda {
+  background-image:url('img/fondo_izda.png');
+  background-repeat:no-repeat;
+  } 
+
+.fondo_sup_dcha_micro_rojo {
+  background-image:url('img/fondo_sup_dcha_micro_rojo.png');
+  background-repeat:no-repeat;
+  background-position:right top;
+  } 
+
+.fondo_inf_dcha_rojo{
+  background-image:url('img/fondo_inf_dcha_rojo.png');
+  background-repeat:no-repeat;
+  background-position:right bottom;
+  } 
+
+.fondo_sup_dcha_rojo {
+  background-image:url('img/fondo_sup_dcha_rojo.png');
+  background-repeat:no-repeat;
+  background-position:right top;
+  }
+
+ .sombra {
+   box-shadow: 1px 1px 2px #999;
+  }
+
+.caja {
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box;         /* Opera/IE 8+ */  
+}
+
+/* ==========================================================================
+   Fuentes
+   ========================================================================== */
+
+ @font-face {
+    font-family: 'thebit';
+    src: url('fonts/futuran-webfont-webfont.eot');
+    src: url('fonts/futuran-webfont-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/futuran-webfont-webfont.woff') format('woff'),
+         url('fonts/futuran-webfont-webfont.ttf') format('truetype'),
+         url('fonts/futuran-webfont-webfont.svg#futura_bk_btbook') format('svg');
+
+  }
+
+ /* body {
+     font-family: arial, verdana;
+  } */
+
+.fuente_verde {
+  color:#D21010;
+  }
+
+ .fuente_rojo {
+  color:#cc3300;
+  } 
+
+ .fuente_gris_medio {
+  color:#999;
+  } 
+
+.fuente_gris_oscuro {
+  color:#666;
+  }
+
+ .fuente_gris_muy_oscuro {
+  color:#333;
+  }
+
+.interlineado_120 {
+  line-height: 120%;  
+  }  
+
+ .interlineado_140 {
+  line-height: 140%;  
+  } 
+
+ .interlineado_160 {
+  line-height: 160%;  
+  }
+
+   .interlineado_170 {
+  line-height: 170%;  
+  } 
+
+
+ .fuente_13 {
+  font-size: 1.3em;
+  }   
+
+ .fuente_12 {
+  font-size: 1.2em;
+  } 
+
+.fuente_11 {
+  font-size: 1.1em;
+  }  
+
+.fuente_10 {
+  font-size: 1em;
+  }
+
+.fuente_9 {
+  font-size: 0.9em;
+  }
+
+.fuente_85 {
+  font-size: 0.85em;
+  }
+
+.fuente_8 {
+  font-size: 0.8em;
+  }
+
+.fuente_7 {
+  font-size: 0.7em;
+  }
+
+.negrita {
+  font-weight: bold;
+  }
+
+  .texto_sombra {
+  text-shadow: 1px 1px 2px #999;
+  } 
+
+
+/* Colores código (residuales de la antigua versión, no se pueden cambiar de nombre)  */
+
+.gris_claro  {  
+  color:#ccc;
+  } 
+  
+.gris_oscuro {  
+  color:#666;
+  } 
+
+.rojo{  
+  color:#c00;
+  }   
+  
+  
+.azul { 
+  color:#36c;
+  }   
+  
+.morado { 
+  color:#90c;
+  }   
+  
+.verde {  
+  color:#090;
+  }   
+
+
+/* ==========================================================================
+   Alinear
+   ========================================================================== */
+
+.texto_derecha {
+  text-align: right;
+}
+
+.texto_centrado {
+  text-align: center;
+}
+
+.centrado {
+  margin:0 auto;
+  text-align: center;
+}
+
+.float_right {
+  float: right;
+  width: 40%;
+  margin-left: 1em;
+  overflow: hidden;
+} 
+
+
+/* ==========================================================================
+   Enlaces
+   ========================================================================== */
+
+a {
+  color:#D21010;
+  text-decoration:none;
+  }
+
+
+a:hover{
+  color:#990000;
+}   
+
+.pseudo_enlace_verde {
+  color:#D21010;
+  }
+
+.pseudo_enlace_verde:hover {
+  color:color:#990000;
+  }
+
+.pseudo_enlace_verde_borde {
+  border-top:1px solid #ededed; 
+  border-left:1px solid #ededed; 
+  border-right:1px solid #ccc; 
+  border-bottom:1px solid #ccc;
+  }
+
+.pseudo_enlace_verde_borde:hover {
+  border-top:1px solid #ccc;
+  border-left:1px solid #ccc;
+  border-right:1px solid #ededed;  
+  border-bottom:1px solid #ededed;
+  }
+
+.cursor_dedo {
+  cursor:pointer;
+  }
+
+
+.botonesVerdes, #submit-comentarios {
+  -moz-box-shadow:inset 0px 1px 0px 0px #d9fbbe;
+  -webkit-box-shadow:inset 0px 1px 0px 0px #d9fbbe;
+  box-shadow:inset 0px 1px 0px 0px #d9fbbe;
+  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #b8e356), color-stop(1, #a5cc52) );
+  background:-moz-linear-gradient( center top, #b8e356 5%, #a5cc52 100% );
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#b8e356', endColorstr='#a5cc52');
+  background-color:#b8e356;
+  -webkit-border-top-left-radius:20px;
+  -moz-border-radius-topleft:20px;
+  border-top-left-radius:20px;
+  -webkit-border-top-right-radius:20px;
+  -moz-border-radius-topright:20px;
+  border-top-right-radius:20px;
+  -webkit-border-bottom-right-radius:20px;
+  -moz-border-radius-bottomright:20px;
+  border-bottom-right-radius:20px;
+  -webkit-border-bottom-left-radius:20px;
+  -moz-border-radius-bottomleft:20px;
+  border-bottom-left-radius:20px;
+  text-indent:0;
+  border:1px solid #83c41a;
+  display:inline-block;
+  color:#ffffff;
+  /* font-family:Arial; */
+  font-size:13px;
+  font-weight:bold;
+  font-style:normal;
+  /*height:20px;
+  line-height:20px;
+  width:100px;  */
+  padding:0.2em 1em;
+  text-decoration:none;
+  text-align:center;
+  text-shadow:1px 1px 0px #86ae47;
+}
+
+.botonesVerdes:hover {
+  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #a5cc52), color-stop(1, #b8e356) );
+  background:-moz-linear-gradient( center top, #a5cc52 5%, #b8e356 100% );
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#a5cc52', endColorstr='#b8e356');
+  background-color:#a5cc52;
+}
+
+.botonesVerdes:active {
+  position:relative;
+  top:1px;
+}
+
+
+/* ==========================================================================
+   Imágenes
+   ========================================================================== */
+
+.imagenes_elasticas {
+  width: 100%;
+  height:auto;
+  }   
+
+.opacidad_hover {
+    -webkit-transition: opacity 1s ease-out; /* Chrome y Safari */
+    -o-transition: opacity  1s ease-out; /* Opera */
+    -moz-transition: opacity  1s ease-out; /* Mozilla Firefox */
+    -ms-transition: opacity  1s ease-out; /* Internet Explorer */ 
+  transition:opacity 1s ease-out;
+  }   
+
+.opacidad_hover:hover {
+  opacity:0.6;
+  }
+
+ /* #slider_main {
+  min-height: 200px;
+} */ 
+
+/* ==========================================================================
+   Menus
+   ========================================================================== */
+
+
+  
+/* Anterior / siguiente */
+
+/* la central */
+
+.navegacion_inferior {
+  overflow:hidden;
+  margin: 0 auto;
+  font-size: 0.8em;
+  font-weight: 900;
+  text-align:center;
+}
+
+#nav-single {
+  overflow:hidden;
+  width: 90%;
+}
+
+#nav-single a { 
+  font-size: 0.7em;
+  font-weight: 900;
+  }
+.nav-previous {
+  float:left;
+  } 
+
+.nav-next {
+  float:right;
+  } 
+  
+/* ==========================================================================
+   Responsive: tablets
+   ========================================================================== */
+
+
+@media screen and (max-width:820px){ 
+  #primary  {
+    float:none;
+    width: 100%;   
+    } 
+
+#secondary {
+  /*float:none;
+  width: 100%; */
+  display: none;
+  }  
+
+.layout_contenedor {
+   width:45%;
+  }
+
+ #slider_main {
+  display: none;
+  } 
+
+}
+  
+/* ==========================================================================
+   Responsive: móviles
+   ========================================================================== */
+
+  .layout_contenedor {
+    display:block;
+    width: 100%; 
+    margin: 0 auto;
+  }
+}
+  
+/* ==========================================================================
+   Responsive: varios
+   ========================================================================== */
+
+
+.contenedor_iframes_elasticos2 {
+  width: 100%;
+  height:auto
+}   
+
+
+/* Ejemplo iframe elástico (quitar el ancho y el alto
+  <div class="contenedor_iframes_elasticos">
+  <iframe src="http://www.youtube.com/embed/OZ8F5Vpg6Zo" frameborder="0"></iframe>
+  </div>
+*/
+
+.contenedor_iframes_elasticos {
+   position: relative;
+    padding-bottom: 56.25%; /* 16/9 ratio */
+    padding-top: 30px; /* IE6 workaround*/
+    height: 0;
+    overflow: hidden;
+}
+
+.contenedor_iframes_elasticos iframe,  
+.contenedor_iframes_elasticos object,  
+.contenedor_iframes_elasticos embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+.palabras_partidas {
+  word-wrap:break-word;
+}
+
+.showMovil {
+  display:none;
+}
+
+@media screen and (max-width:420px){ 
+  .hiddenMovil {  
+    display:none;
+  }
+  .showMovil {
+    display:block;
+  }
+}
+
+
+  
+/* ==========================================================================
+   Elementos singulares
+   ========================================================================== */
+/*
+#submit-comentarios {
+  border-top: 1px solid #EDEDED;
+  border-left: 1px solid #EDEDED;
+  border-right: 1px solid #CCC;
+  border-bottom: 1px solid #CCC;
+  border-radius: 10px;
+  padding: 0.3em;
+  font-weight: 900;
+  font-size:1em;
+  color:#339900;
+}
+
+
+#submit-comentarios:hover {
+  border-top: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ededed;
+  border-bottom:1px solid #ededed; 
+  color:#000; 
+  } */
+
+h2.titulares {
+font-size: 1.4em;
+font-weight: 900;
+color: #666;
+margin-top: 0;
+margin-bottom:0.5em;
+}
+
+.listas_blancas {
+list-style-type: none;
+margin-left: 0;
+padding-left: 0;
+} 
+
+
+
+/* ==========================================================================
+   Entradas individuales - estilos + WordPress
+   ========================================================================== */
+
+.entradas h4 {
+  font-size: 1.2em;
+  line-height: 1em;
+  color: #333;
+  margin-bottom: 0.3em;
+  font-weight: bold;
+}
+
+.entradas h5 {
+  font-size: 1em;
+  line-height: 1em;
+  color: #333;
+  margin-bottom: 0.3em;
+}
+
+.alignleft {
+  float: left;  
+}
+.alignright {
+  float: right;
+  margin-left:2em;
+}
+.aligncenter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.wp-caption {
+  max-width: 100%; /* Keep wide captions from overflowing their container. */
+  padding: 4px;
+}
+.wp-caption .wp-caption-text,
+.gallery-caption,
+.entry-caption {
+  font-style: italic;
+  font-size: 0.8em;
+  line-height: 2;
+  color: #666;
+}
+
+img.wp-smiley,
+.rsswidget img {
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  margin-bottom: 0;
+  margin-top: 0;
+  padding: 0;
+}
+.entry-content dl.gallery-item {
+  margin: 0;
+}
+.gallery-item a,
+.gallery-caption {
+  width: 90%;
+}
+.gallery-item a {
+  display: block;
+}
+.gallery-caption a {
+  display: inline;
+}
+.gallery-columns-1 .gallery-item a {
+  max-width: 100%;
+  width: auto;
+}
+.gallery .gallery-icon img {
+  height: auto;
+  max-width: 90%;
+  padding: 5%;
+}
+.gallery-columns-1 .gallery-icon img {
+  padding: 3%;
+}      
+
+
+/* Tablas */
+
+table.grey_table {
+  border: 1px solid #000;
+  padding: 0.5em;
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+table.grey_table td {
+  border: 1px solid #000;
+  padding: 0.25em;
+ }
+
+
+table.grey_table tr:nth-child(even) { 
+  background-color: #fff; 
+}
+
+table.grey_table tr:nth-child(odd) { 
+  background-color: #e0e0e0;
+}
+
+ table.grey_table th  { 
+  background-color: #666;
+  color: #fff; 
+}
+
+
+
+/* ==========================================================================
+   PENDIENTES DE CONVERTIR EN OOCSS
+   ========================================================================== */
+
+#secondary {
+  font-size: 0.9em;
+}
+
+#pie {
+  margin-top: 2em;
+  line-height: 130%;
+  font-weight: 400;
+}
+
+.pieImagenesPaginas {
+  font-size: 0.8em;
+  color: #8A8A8A;
+  text-align: right;
+  margin: 0.1em;
+}
+
+.imgSeries {
+  margin-top: 0.7em;
+  cursor: pointer;
+}
+
+.imgSeries img {
+  border-top-left-radius: 1em;
+  border-top-right-radius: 1em;
+    -webkit-transition: opacity 1s ease-out; /* Chrome y Safari */
+    -o-transition: opacity  1s ease-out; /* Opera */
+    -moz-transition: opacity  1s ease-out; /* Mozilla Firefox */
+    -ms-transition: opacity  1s ease-out; /* Internet Explorer */ 
+  transition:opacity 1s ease-out;
+}
+
+.imgSeries img:hover {
+  opacity: 0.6;
+}
+
+.textwidget {
+  font-size: 0.9em;
+  color: #8f8f8f;
+  line-height: 140%;
+  padding: 0.5em;
+}
+
+/* .post_aleatorios_titulo {
+   font-size: 0.8em;
+   line-height: 140%;
+} */
+
+.textwidget ul {
+  list-style-type: square;
+  margin:0.3em;
+  padding:1.3em;
+}
+
+/* Microentradas, microblogging
+----------------------------------------------- */                
+
+.microblog-capsula {
+  float:left;
+  /* max-width:240px; */
+  width:31%; 
+  background-color:#fff; 
+  border-top:1px solid #ededed; 
+  border-left:1px solid #ededed; 
+  border-right:1px solid #ccc; 
+  border-bottom:1px solid #ccc; 
+  margin: 0.5%;
+  float:left;
+  overflow:hidden;
+  height:13em;
+  border-radius:10px;
+  -moz-border-radius:10px;
+  -webkit-border-radius:10px;
+  box-sizing:border-box;  
+  -webkit-box-sizing:border-box;  
+  -moz-box-sizing:border-box; 
+  transition:background-color 1s linear;
+  -webkit-transition: background-color 1s linear; /* Chrome y Safari */
+  -o-transition: background-color 1s linear; /* Opera */
+  -moz-transition: background-color 1s linear; /* Mozilla Firefox */
+  -ms-transition: background-color 1s linear; /* Internet Explorer */
+  }
+  
+.microblog-capsula:hover {
+  background-color: #ffff99;
+  } 
+
+
+.microblog-capsula h6 {
+  color:#666;
+  margin:0.2em;
+  padding:0.2em;
+  letter-spacing:1px;
+  } 
+  
+.microblog-capsula-contenidos { 
+  margin:0.2em;
+  padding:0.2em;
+  font-size: 0.8em;
+  }
+  
+.microblog-capsula-metadatos {
+  font-size:0.7em;
+  color:#666;
+  margin:0.2em;
+  padding:0.2em;
+  border-top: 1px dotted #666;
+  border-bottom: 1px dotted #666;
+  }
+  
+  
+/* Responsive */
+
+@media screen and (max-width:620px){ 
+  .microblog-capsula {  
+    width:45%;
+    float:left;   
+    }   
+  } 
+  
+@media screen and (max-width:320px){ 
+  .microblog-capsula{ 
+    float:none;
+    width:100%;
+    margin:0 auto;  
+    } 
+} 
+
+/* Código */
+
+.prettyprint {
+  padding: 5px;
+  border: 1px solid #CCC;
+  background: #f9f9f9; /* #f3f3f3; */
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 1em;
+  margin: 1em;
+  text-align: left;
+  word-wrap:break-word;
+  line-height: 180%;
+  }
+
+.prettyprint p {
+  margin-bottom: 0.1em;
+  margin-top: 0.1em;
+}
+
+.prettyprint p:hover {
+  background: #ffffcc !important;
+}    
+
+ul.linenums {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  }
+
+.linenums_tab {
+  margin-left: 3em;
+  padding: 0;
+  }
+
+li.linenums  {
+display: list-item;
+  }
+  
+.linenums li:hover  {
+  background: #ffffcc !important;
+  }
+
+.linenums ul {
+  list-style-type: none;
+   margin-left: 1em;
+  padding: 0;
+  }  
+
+ol.linenums {
+  margin: 0.1em;
+  }
+
+  
+/* suscribe */
+  
+.clase_suscribe {
+  margin:1em;
+  font-size:0.9em;
+  color: #666;
+}
+
+#clase_suscribe .input {
+  color: #333;
+} 
+  
+
+/* Varios comentarios */
+
+.nopassword {
+  font-weight:900;  
+  font-size: 0.8em;
+  color:#cc0000;
+  } 
+  
+.nocomments {
+  font-weight:900;  
+  font-size: 0.8em;
+  color:#666;
+  } 
+  
+.comment-author img {
+  width:auto;
+  height:auto;
+  width: auto\9; /* IE*/
+    /* IE*/
+}
+
+#commentarios  img{
+  width:auto;
+  height:auto;
+  width: auto\9; /* IE*/
+    /* IE*/
+}
+  
+/* Sin resultados */
+  
+#post-0 { 
+  border-top:1px solid #ededed; 
+  border-left:1px solid #ededed; 
+  border-right:1px solid #ccc; 
+  border-bottom:1px solid #ccc;
+  padding:1em;
+  width:60%;
+  min-width:240px;
+}
+
+/*=======================================
+  Complementos
+========================================*/
+/*
+@media screen and (max-width:800px){ 
+  #headerDatosComplementarios {   
+    display:none;
+  } 
+} */
+
+#tinymce {
+  font-size: 16px;
+  font-family: arial;
+}
+/*
+#slider_main {
+  height: 260px;
+  min-height: 260px;
+}*/

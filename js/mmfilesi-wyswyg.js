@@ -315,7 +315,7 @@
 
       } else {
         button.addClass('js-active');
-        linkPanel.css('left', button.offset().left).slideDown(600);           
+        linkPanel.css('left', button.position().left).slideDown(600);           
         submitLink.click(function() {
           if (selRange !== null ) {
             self.restoreSelection(selRange);
@@ -371,7 +371,7 @@
         unbindButton();
 
       } else {
-        videoPanel.css('left', button.offset().left).slideDown(600);
+        videoPanel.css('left', button.position().left).slideDown(600);
         button.addClass('js-active');
        
         inputResponsive.click(function() {
@@ -491,7 +491,7 @@
         unbindButton();
 
       } else {
-        imgPanel.css('left', button.offset().left).slideDown(600);
+        imgPanel.css('left', button.position().left).slideDown(600);
         button.addClass('js-active');
        
         inputResponsive.click(function() {
@@ -572,7 +572,7 @@
         unbindButton();           
 
       } else {
-        smilePanel.css('left', button.offset().left).slideDown(600);
+        smilePanel.css('left', button.position().left).slideDown(600);
         button.addClass('js-active');
         $('.js-smile').click(function() {
           if ( selRange !== null ) {
@@ -613,7 +613,7 @@
         unbindButton();
 
       } else {
-        colorPanel.css('left', button.offset().left).slideDown(600);
+        colorPanel.css('left', button.position().left).slideDown(600);
         button.addClass('js-active');
         optionColor.click(function() {
           if(selRange !== null ) {
@@ -654,7 +654,7 @@
         unbindButton();
 
       } else {
-        colorPanel.css('left', button.offset().left).slideDown(600);
+        colorPanel.css('left', button.position().left).slideDown(600);
         button.addClass('js-active');
         optionColor.click(function() {
           if(selRange !== null ) {
@@ -764,6 +764,11 @@
       var editor = textArea.prev('.editor-mm');
       editor.blur(function() {
           textArea.val(editor.html());
+      });
+
+     $('.js-buttons').click(function(event) {
+        event.preventDefault();
+        event.stopPropagation();
       });
 
       /* Todo: chrome bugs... */

@@ -1,74 +1,181 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="author" content="mmfilesi">
+      <meta name="Copyright" content="cc-by-sa">        
+      <meta name="description" content="">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Editor-mmfilesi by mmfilesi</title>
 
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="chrome=1">
-  <title>Editor-mmfilesi by mmfilesi</title>
+      <!-- favicon y miniatura para el móvil-->
+      <link rel="shortcut icon" href="gh-pages/img/favicon.ico">
+      <link rel="apple-touch-icon" href="gh-pages/img/apple-touch-icon.png">
 
-  <link rel="stylesheet" href="stylesheets/styles.css">
-  <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <link rel="stylesheet" type="text/css" href="css/styles.css" media="screen" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-  <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-</head>
+      <link rel="stylesheet" href="gh-pages/css/bootstrap.min.css">
+      <link rel="stylesheet" href="gh-pages/css/style.css">
 
-<body>
-  <div class="wrapper">
+      <link rel="stylesheet" type="text/css" href="css/mmfilesi-wyswyg.min.css">
 
-    <header>
-      <h1>Editor-mmfilesi</h1>
-      <p>jquery plugin - editor wyswyg</p>
-      <p class="view"><a href="https://github.com/mmfilesi/editor-mmfilesi">View the Project on GitHub <small>mmfilesi/editor-mmfilesi</small></a>
-      </p>
-      <ul>
-        <li><a href="https://github.com/mmfilesi/editor-mmfilesi/zipball/master">Download <strong>ZIP File</strong></a>
-        </li>
-        <li><a href="https://github.com/mmfilesi/editor-mmfilesi/tarball/master">Download <strong>TAR Ball</strong></a>
-        </li>
-        <li><a href="https://github.com/mmfilesi/editor-mmfilesi">View On <strong>GitHub</strong></a>
-        </li>
-      </ul>
-    </header>
+      <!-- Llevar luego a una hoja aparte -->
+      <style>
 
-    <section>
-      <h3>IN WORK... :P</h3>
+        body {
+          margin-top: 1em;
+          margin-bottom: 1em;
+          background: #fbfbfb;
+          background-image: url('gh-pages/img/fondo50.png');
+          background-repeat: repeat;
+        }
 
+        .main {
+          max-width: 1124px;
+          margin: 0 auto;
+          font-family: Verdana, Arial, Helvetica, sans-serif;
+          line-height: 160%;
+          border-top: 1px solid #ededed;
+          border-left: 1px solid #ededed;
+          border-right: 1px solid #ccc;
+          border-bottom: 1px solid #ccc;
+          border-radius: 20px;
+          padding: 1em;
+          background: #fff;
+        }
 
-      <textarea id="foo">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</textarea>
-      <a href="www.mmfilesi.com">www.mmfilesi.com</a>
-      <button id="js-Demo">Submit</button>
+        .mainHeader {
+          text-align: right;
+          border-top: 1px solid #ededed;
+          border-bottom: 1px solid #ccc;
+          padding: 0.5em;
+          margin: 0.5em;
+        }
+
+        #toServer {
+          position: absolute;
+          z-index: 18;
+          top: 25px;
+          background: #FFFFFF;
+          padding: 1em;         
+          width: 500px;
+          border: 1px solid #ccc;
+          left: 25px;
+          -webkit-box-shadow: 2px 2px 5px 0px rgba(50, 50, 50, 0.75);
+          -moz-box-shadow: 2px 2px 5px 0px rgba(50, 50, 50, 0.75);
+          box-shadow: 2px 2px 5px 0px rgba(50, 50, 50, 0.75);
+        }
+
+        .bandaCerrar {
+          text-align: right;
+          cursor:pointer;
+        }
+
+        #toServerContent {
+          height: 200px;
+          overflow-y: auto;
+          resize: none;
+          width: 400px;
+          padding: 0.5em;
+        }
+
+        #footer {
+          margin-top: 30px;
+          text-align: center;
+          border-radius: 10px;
+        }
+
+        #js-Demo {
+          margin-top: 1em;
+          margin-left: 400px;
+        }
+
+        .subEnunciados {
+          margin: 0.5em 0;
+          font-weight: bold;
+        }
+
+      </style>
+
+  </head>
+  <body itemscope itemtype="http://schema.org/WebPage">
+
+    <section class="main">
+
+      <header class="mainHeader">
+
+      <a href="http://www.mmfilesi.com/" itemprop="url">
+      <img src="http://www.mmfilesi.com/wp-content/themes/bit-theme/img/cabecera2.png" alt="The Bit Jazz Band - Cabecera" class="imagenes_elasticas opacidad_hover"/>
+      </a>
+
+        <h3>mmfilesi - editor wyswyg <small>... jQuery plugin</small></h3>
+      </header>
+
+      <div class="row">
+          
+         <div class="col-md-3">
+          <nav>
+            <ul class="list-group">
+              <li class="list-group-item"><a href="https://github.com/mmfilesi/editor-mmfilesi/zipball/master">Download <strong>ZIP File</strong></a></li>
+              <li class="list-group-item"><a href="https://github.com/mmfilesi/editor-mmfilesi/tarball/master">Download <strong>TAR Ball</strong></a></li>
+              <li class="list-group-item"><a href="https://github.com/mmfilesi/editor-mmfilesi">View On <strong>GitHub</strong></a></li>
+            </ul>
+          </nav>
+          <aside>
+            <p>This project is maintained by <a href="https://github.com/mmfilesi">mmfilesi</a></p>
+          </aside>
+        </div>
+
+        <article class="col-md-9">
+          <h3>In work</h3>
+        <form>          
+          <textarea id="foo">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</textarea>
+          <button id="js-Demo" class="btn btn-success">Submit</button>
+        </form>
+        <div id="toServer" style="display:none;">
+          <div class="bandaCerrar"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></div>
+          <p class="subEnunciados">To server: </p>
+          <textarea id="toServerContent"></textarea>
+           
+          </div>
+        </div>   
+        </article>
+
+      </div>
 
     </section>
 
-    <footer>
-      <p>This project is maintained by <a href="https://github.com/mmfilesi">mmfilesi</a>
-      </p>
+    <footer id="footer" class="main">      
       <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small>
       </p>
     </footer>
-  </div>
-  <script src="javascripts/scale.fix.js"></script>
 
+    <script src="js/vendor/jquery.min.js"></script>
+    <script src="js/mmfilesi-wyswyg.min.js"></script> 
 
-  <script src="js/vendor/jquery.min.js"></script>
-  <script src="js/mmfilesi-wyswyg.js"></script>
+    <script>
 
-  <script>
-    $(document).ready(function() {
-      var options = {};
-      $('#foo').editorMM(options);
-    });
+      $(document).ready(function() {
+        var options = {};
+        options.style = { 'width': '475px' };
+        $('#foo').editorMM(options);
+      });
 
-    $('#js-Demo').click(function(){
-      var content =  $('#foo').val();
-      $('#foo').after('<p>Envías al server: </p>'+content);
-    });
-  </script>
-  
+      $('#js-Demo').click(function(event){
+        event.preventDefault();
+        event.stopPropagation();
+        var content =  $('#foo').val();
+        $('#toServerContent').val(content);
+        $('#toServer').slideDown();
+        $('.bandaCerrar').click(function() {
+          $('#toServer').slideUp();
+        });
+      });
 
-</body>
-
+    </script>
+       
+    </body>
 </html>
+
